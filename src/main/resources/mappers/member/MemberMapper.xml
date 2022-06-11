@@ -1,1 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.MemberMapper">
+	
+	<!-- (1) 로그인 로직 데이터 타입 매핑 -->
+	<resultMap type="com.care.root.member.dto.MemberDTO" id="member">
+		<id property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="addr" column="addr"/>
+	</resultMap>
+	
+	<!-- (1) 로그인 로직 데이터 추출 -->
+	<select id="user_check" resultMap="member">
+		select * from membership where id = #{id}
+	</select>
+
+</mapper>

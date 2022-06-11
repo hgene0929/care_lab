@@ -82,7 +82,15 @@ nav ul li a:hover {
 		<div class="wrap">
 			<nav>
 				<ul>
-					<li><a href="">HOME</a></li>
+					<li><a href="/root">HOME</a></li>
+					<li>
+						<c:if test="${loginUser == null }">
+							<a href="/root/member/login">LOGIN</a>
+						</c:if>
+						<c:if test="${loginUser != null }">
+							<a href="/root/member/logout">LOGOUT</a>
+						</c:if>
+					</li>
 				</ul>
 			</nav>
 		</div>
