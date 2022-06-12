@@ -64,6 +64,14 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.register(dto);
 	}
 
+	/*
+	 * 회원 삭제 로직
+	 */
+	@Override
+	public void delete(String id) {
+		mapper.delete(id);
+	}
+
 }
 
 

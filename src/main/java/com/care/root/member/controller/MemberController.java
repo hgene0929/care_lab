@@ -93,6 +93,8 @@ public class MemberController implements SessionName {
 	@PostMapping("register")
 	public String register(MemberDTO dto) {
 		
+		//String[] str = dto.getAddr().split(",");
+		
 		int result = ms.register(dto);
 		
 		if(result == 1) {
@@ -100,6 +102,28 @@ public class MemberController implements SessionName {
 		}
 		
 		return "redirect:register_form";
+	}
+	
+	/*
+	 * 회원 정보 수정
+	 */
+	@GetMapping("update_form")
+	public String update_form(@RequestParam String id, Model model) {
+		
+		ms.info(model, id);
+		
+		return "member/update";
+	}
+	
+	/*
+	 * 회원 정보 삭제
+	 */
+	@GetMapping("delete")
+	public String delete(@RequestParam String id) {
+		
+		ms.delete(id);
+		
+		return "redirect:memberInfo";
 	}
 
 }

@@ -9,5 +9,6 @@ public interface MemberMapper {
 	public MemberDTO user_check(String id);
 	public List<MemberDTO> memberInfo();
 	public int register(MemberDTO dto);
+	public void delete(String id);
 	
 }

@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -41,18 +40,20 @@ function reg() {
 </script>
 </head>
 <body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../default/header.jsp" %>
+
 <div class="wrap" align="center">
-	<form id="fo" action="register" method="post">
+	<form id="fo" action="update" method="post">
 		<table>
 			<tr>
 				<td>
-					<input type="text" name="id" id="id", placeholder="아이디"><br>
-					<input type="password" name="pw" id="pw", placeholder="패스워드"><br>
-					<input type="text" name="addr" id="addr1" readonly, placeholder="우편번호">
+					<input type="text" name="id" id="id", placeholder=${data.id }><br>
+					<input type="password" name="pw" id="pw", placeholder=${data.pw }><br>
+					<input type="text" name="addr" id="addr1" readonly, placeholder=${data2.str[0] }>
 					<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
-					<input type="text" name="addr" id="addr2" readonly, placeholder="주소">
-					<input type="text" name="addr", placeholder="상세주소"><br>
+					<input type="text" name="addr" id="addr2" readonly, placeholder=${data2.str[1] }>
+					<input type="text" name="addr", placeholder=${data2.str[2] }><br>
 					<input type="button" onclick="reg()" value="확인">			
 				</td>
 			</tr>

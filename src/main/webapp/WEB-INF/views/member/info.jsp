@@ -18,6 +18,12 @@
 		<tr><th>아이디</th> <td>${data.id }</td></tr>
 		<tr><th>비밀번호</th> <td>${data.pw }</td></tr>
 		<tr><th>주소</th> <td>${data.addr }</td></tr>
+		<tr>
+			<td>
+				<button type="button"><a href="update_form?id=${data.id }">수정</a></button>
+				<button type="button"><a href="delete?id=${data.id }">삭제</a></button>
+			</td>
+		</tr>
 	</table>
 </div>
 </body>
