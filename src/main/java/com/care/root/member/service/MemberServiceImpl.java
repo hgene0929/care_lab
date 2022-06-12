@@ -72,6 +72,15 @@ public class MemberServiceImpl implements MemberService {
 		mapper.delete(id);
 	}
 
+	/*
+	 * 회원 수정 로직
+	 */
+	@Override
+	public void update(MemberDTO dto) {
+		mapper.update(dto);
+	}
+
+
 }
 
 

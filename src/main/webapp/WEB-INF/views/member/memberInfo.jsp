@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>members</title>
 </head>
-<body>
+<body onload="setPost()">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../default/header.jsp" %>
 

@@ -22,39 +22,42 @@ function daumPost() {
             
             $("#addr1").val(data.zonecode)
             $("#addr2").val(addr)
+            $("#addr3").val("")
+            $("#addr3").val("").focus()
         }
     }).open();
 }
 
-function reg() {
-	if($("#id").val() == "") {
-		alert("아이디는 필수 항목 입니다.")
-		$("#id").focus()
-	} else if($("#pw").val() == "") {
-		alert("비밀번호는 필수 항목 입니다.")
-		$("#pw").focus()
-	} else {
-		fo.submit()
-	}
+function setPost() {
+	let str = '${data.addr}'
+	let arr = str.split(",")
+	
+	$("#addr1").val(arr[0])
+    $("#addr2").val(arr[1])
+    $("#addr3").val(arr[2])
 }
+
 </script>
 </head>
-<body>
+<body onload="setPost()">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../default/header.jsp" %>
 
-<div class="wrap" align="center">
+<div class="wrap" align="center" style="width: 500px; margin: 0 auto;">
+	<br>
+	<h3 align="center">회 원 정 보 수 정</h3>
+	<br>
 	<form id="fo" action="update" method="post">
 		<table>
 			<tr>
 				<td>
-					<input type="text" name="id" id="id", placeholder=${data.id }><br>
-					<input type="password" name="pw" id="pw", placeholder=${data.pw }><br>
-					<input type="text" name="addr" id="addr1" readonly, placeholder=${data2.str[0] }>
+					<input type="text" name="id" readonly value=${data.id }><br>
+					<input type="text" name="pw" readonly value="**********"><br>
+					<input type="text" name="addr" id="addr1" readonly>
 					<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
-					<input type="text" name="addr" id="addr2" readonly, placeholder=${data2.str[1] }>
-					<input type="text" name="addr", placeholder=${data2.str[2] }><br>
-					<input type="button" onclick="reg()" value="확인">			
+					<input type="text" name="addr" id="addr2" readonly>
+					<input type="text" name="addr" id="addr3"><br>
+					<input type="submit" value="수정">			
 				</td>
 			</tr>
 		</table>

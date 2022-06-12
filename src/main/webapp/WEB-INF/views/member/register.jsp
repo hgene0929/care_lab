@@ -16,9 +16,9 @@ function daumPost() {
             // 예제를 참고하여 다양한 활용법을 확인해 보세요.
             let addr = "";
             if(data.userSelectedType == 'R') {
-            	addr = data.roadAddress
+            	addr = data.roadname
             } else {
-            	addr = data.zibunAddress
+            	addr = data.bname
             }
             
             $("#addr1").val(data.zonecode)
@@ -52,7 +52,7 @@ function reg() {
 					<input type="text" name="addr" id="addr1" readonly, placeholder="우편번호">
 					<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
 					<input type="text" name="addr" id="addr2" readonly, placeholder="주소">
-					<input type="text" name="addr", placeholder="상세주소"><br>
+					<input type="text" name="addr", placeholder="주소성격"><br>
 					<input type="button" onclick="reg()" value="확인">			
 				</td>
 			</tr>

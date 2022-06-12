@@ -115,15 +115,24 @@ public class MemberController implements SessionName {
 		return "member/update";
 	}
 	
+	@PostMapping("update")
+	public String update(MemberDTO dto) {
+		
+		ms.update(dto);
+		
+		return "redirect:info?id="+dto.getId();
+	}
+	
 	/*
 	 * 회원 정보 삭제
 	 */
 	@GetMapping("delete")
-	public String delete(@RequestParam String id) {
+	public String delete(@RequestParam String id, HttpSession session) {
 		
 		ms.delete(id);
+		session.invalidate();
 		
-		return "redirect:memberInfo";
+		return "redirect:/";
 	}
 
 }

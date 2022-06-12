@@ -13,5 +13,6 @@ public interface MemberService {
 	public void info(Model model, String id);
 	public int register(MemberDTO dto);
 	public void delete(String id);
+	public void update(MemberDTO dto);
 
 }
