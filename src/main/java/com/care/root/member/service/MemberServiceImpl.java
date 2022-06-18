@@ -1,5 +1,8 @@
 package com.care.root.member.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +81,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void update(MemberDTO dto) {
 		mapper.update(dto);
+	}
+
+	/*
+	 * 자동로그인을 위해 세션을 DB에 저장
+	 */
+	@Override
+	public void keepLogin(String sessionId, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sessionId", sessionId);
+		map.put("id", id);
+		mapper.keepLogin(map);
 	}
 
 

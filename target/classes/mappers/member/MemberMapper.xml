@@ -35,5 +35,10 @@
 	<update id="update">
 		update membership set pw = #{pw}, addr = #{addr} where id = #{id}
 	</update>
+	
+	<!-- (6) 자동로그인 사용자 세션값 저장 -->
+	<update id="keepLogin">
+		update membership set session_id=#{sessionId} where id=#{id}
+	</update>
 
 </mapper>

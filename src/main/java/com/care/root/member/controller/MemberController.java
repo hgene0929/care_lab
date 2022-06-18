@@ -1,6 +1,8 @@
 package com.care.root.member.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,7 @@ public class MemberController implements SessionName {
 		
 		if (result == 0) {
 			rs.addAttribute("id", request.getParameter("id"));
+			rs.addAttribute("autoLogin", request.getParameter("autoLogin"));
 			return "redirect:successfulLogin";
 		}
 		
@@ -47,9 +50,20 @@ public class MemberController implements SessionName {
 	
 	@GetMapping("successfulLogin")
 	public String successLogin(@RequestParam String id,
-							   HttpSession session) {
+							   @RequestParam(required = false) String autoLogin,
+							   HttpSession session, HttpServletResponse response) {
 		
 		session.setAttribute(LOGIN, id);
+		
+		if (autoLogin != null) { //자동로그인 처리
+			int t = 60*60*24*90; //쿠키 존속기간을 90일동안으로 잡은 변수 (초*분*시간*일)
+			Cookie cook = new Cookie("loginCookie", session.getId());
+			cook.setMaxAge(t);
+			
+			response.addCookie(cook);
+			
+			ms.keepLogin(session.getId(), id);
+		}
 		
 		return "member/successfulLogin";
 	}

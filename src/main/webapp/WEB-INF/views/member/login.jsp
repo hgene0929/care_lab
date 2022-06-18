@@ -15,6 +15,7 @@
 		<input type="submit" value="로그인">
 		<a href="register_form">회원가입</a>
 		<br>
+		<input type="checkbox" name="autoLogin">자동로그인
 	</form>
 </div>
 </body>
