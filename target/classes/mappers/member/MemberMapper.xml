@@ -9,6 +9,7 @@
 		<id property="id" column="id"/>
 		<result property="pw" column="pw"/>
 		<result property="addr" column="addr"/>
+		<result property="sessionId" column="session_id"/>
 	</resultMap>
 	
 	<!-- (1) 로그인 로직 데이터 추출 -->
@@ -23,7 +24,7 @@
 	
 	<!-- (3) 회원 가입 데이터 삽입 -->
 	<insert id="register">
-		insert into membership values(#{id},#{pw},#{addr})
+		insert into membership(id, pw, addr) values(#{id},#{pw},#{addr})
 	</insert>
 	
 	<!-- (4) 회원 데이터 삭제 -->
@@ -40,5 +41,10 @@
 	<update id="keepLogin">
 		update membership set session_id=#{sessionId} where id=#{id}
 	</update>
+	
+	<!-- (7) 자동로그인 가능 사용자인지 검증 -->
+	<select id="getSessionId" resultMap="member">
+		select * from membership where session_id=#{sessionId}
+	</select>
 
 </mapper>

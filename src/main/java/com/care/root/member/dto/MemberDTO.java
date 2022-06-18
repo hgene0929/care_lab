@@ -6,6 +6,7 @@ public class MemberDTO {
 	private String id;
 	private String pw;
 	private String addr;
+	private String sessionId;
 	
 	// getter/setter
 	public String getId() {
@@ -25,6 +26,12 @@ public class MemberDTO {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 	
 }

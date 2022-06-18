@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,6 +60,7 @@ public class MemberController implements SessionName {
 			int t = 60*60*24*90; //쿠키 존속기간을 90일동안으로 잡은 변수 (초*분*시간*일)
 			Cookie cook = new Cookie("loginCookie", session.getId());
 			cook.setMaxAge(t);
+			cook.setPath("/");
 			
 			response.addCookie(cook);
 			
@@ -69,7 +71,15 @@ public class MemberController implements SessionName {
 	}
 	
 	@GetMapping("logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, 
+					     @CookieValue(required = false)Cookie loginCookie,
+					     HttpServletResponse response) {
+		
+		loginCookie.setMaxAge(0);
+		loginCookie.setPath("/");
+		response.addCookie(loginCookie);
+		
+		ms.keepLogin("nan", (String)session.getAttribute(LOGIN));
 		
 		session.invalidate();
 		

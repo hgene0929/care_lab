@@ -94,6 +94,14 @@ public class MemberServiceImpl implements MemberService {
 		mapper.keepLogin(map);
 	}
 
+	/*
+	 * 자동로그인을 위해 쿠키와 세션 비교
+	 */
+	@Override
+	public MemberDTO getSessionId(String sessionId) {
+		return mapper.getSessionId(sessionId);
+	}
+
 
 }
 

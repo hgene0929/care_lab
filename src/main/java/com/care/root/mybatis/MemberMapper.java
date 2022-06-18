@@ -13,4 +13,5 @@ public interface MemberMapper {
 	public void delete(String id);
 	public void update(MemberDTO dto);
 	public void keepLogin(Map<String, Object> map);
+	public MemberDTO getSessionId(String sessionId);
 }

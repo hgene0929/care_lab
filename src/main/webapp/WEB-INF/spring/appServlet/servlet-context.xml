@@ -23,6 +23,13 @@
 	
 	<context:component-scan base-package="com.care.root" />
 	
-	
+	<!-- 인터셉터 등록 -->
+	<beans:bean id="autoLogin" class="com.care.root.common.AutoLogin"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/" />
+			<beans:ref bean="autoLogin" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

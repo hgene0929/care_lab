@@ -15,4 +15,5 @@ public interface MemberService {
 	public void delete(String id);
 	public void update(MemberDTO dto);
 	public void keepLogin(String sessionId, String id);
+	public MemberDTO getSessionId(String sessionId);
 }
