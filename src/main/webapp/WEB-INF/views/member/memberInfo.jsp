@@ -12,7 +12,7 @@
 
 <div class="wrap">
 	<br>
-	<h3 align="center">- 회 원 정 보 -</h3>
+	<h3 align="center">회 원 정 보</h3>
 	<br>
 	<table class="table table-striped">
 		<tr>

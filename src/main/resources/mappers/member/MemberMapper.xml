@@ -46,5 +46,10 @@
 	<select id="getSessionId" resultMap="member">
 		select * from membership where session_id=#{sessionId}
 	</select>
+	
+	<!-- (7) 회원 가능 아이디인지 검증 -->
+	<select id="idCheck" resultType="Integer">
+		select count(*) from membership where id=#{id}
+	</select>
 
 </mapper>

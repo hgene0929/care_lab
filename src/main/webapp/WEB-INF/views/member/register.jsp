@@ -38,6 +38,23 @@ function reg() {
 		fo.submit()
 	}
 }
+
+function idCheck() {
+	let id = $("#id").val()
+	
+	$.ajax({
+		url : "idCheck/"+id, type : "get",
+		success : function(result) {
+			if(result == 0) {//사용가능한 아이디입니다
+				$("#label").html("<b>"+id+"는 사용가능한 아이디입니다.</b>")
+			} else if(result == -1) {//길이가 짧습니다
+				$("#label").html("<b>길이가 짧습니다.</b>")
+			} else { //중복된 아이디 입니다
+				$("#label").html("<b>중복된 아이디입니다.</b>")
+			}
+		}
+	})
+}
 </script>
 </head>
 <body>
@@ -47,7 +64,9 @@ function reg() {
 		<table>
 			<tr>
 				<td>
-					<input type="text" name="id" id="id", placeholder="아이디"><br>
+					<input type="text" name="id" id="id", placeholder="아이디" oninput="idCheck()">
+					<label id="label"></label><br>
+					
 					<input type="password" name="pw" id="pw", placeholder="패스워드"><br>
 					<input type="text" name="addr" id="addr1" readonly, placeholder="우편번호">
 					<button type="button" onclick="daumPost()">우편번호 찾기</button><br>
