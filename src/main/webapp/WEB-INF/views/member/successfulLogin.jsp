@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인성공</title>
+<title>FoodTherapy</title>
 </head>
 <body>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../default/header1.jsp" %>
+
 <h3 align="center">${loginUser }님 환영합니다!</h3>
 </body>
 </html>

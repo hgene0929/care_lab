@@ -4,17 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>members</title>
+<title>FoodTherapy</title>
 </head>
 <body onload="setPost()">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../default/header.jsp" %>
+<%@ include file="../default/header1.jsp" %>
 
 <div class="wrap">
 	<br>
 	<h3 align="center">회 원 정 보</h3>
 	<br>
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<tr>
 			<th>아이디</th> <th>비밀번호</th> <th>주소</th>
 		</tr>
