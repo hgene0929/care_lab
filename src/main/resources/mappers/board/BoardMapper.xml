@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.board.BoardMapper">
+	
+	<!-- DTO와 DB의 데이터이름 형식 매핑( 조회시 필요 ) -->
+	<resultMap type="com.care.root.board.dto.BoardDTO" id="board">
+		<id property="writeNo" column="write_no" />
+		<result property="imageFileName" column="image_file_name" />
+		<result property="saveDate" column="Savedate" /> 
+	</resultMap>
+	
+	<!-- (1) 게시판 글 전체 조회 -->
+	<select id="boardAllList" resultMap="board">
+		select * from mvc_board
+	</select>
+
+	<!-- (2) 게시판 글 작성 -->
+	<insert id="writeSave" >
+	    insert into mvc_board(write_no,id,title,content,image_file_name)
+	    values(mvc_board_seq.nextval,#{id},#{title},#{content},#{imageFileName})
+	</insert>
+	
+	<!-- (3) 게시글 상세 조회 -->
+	<select id="contentView" resultMap="board">
+		select * from mvc_board where writeNo=#{writeNo}
+	</select>
+	
+	<update id="upHit">
+		update mvc_board set hit=hit+1 where writeNo=#{writeNo}
+	</update>
+	
+	<!-- (4) 게시글 삭제 -->
+	<delete id="delete">
+		delete from mvc_board where writeNo=#{writeNo}
+	</delete>
+	
+	<!-- (5) 게시글 수정 -->
+	<update id="update">
+		update mvc_board set title=#{title}, content=#{content}, saveDate=#{saveDate}, imageFileName=#{imageFileName} 
+		where title=#{title}
+	</update>
+</mapper>

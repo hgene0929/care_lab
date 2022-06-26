@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FoodTherapy</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <style type="text/css">
 * {
@@ -83,21 +83,19 @@ nav ul li a:hover {
 		<div class="wrap">
 			<nav>
 				<ul>
-					<li><a href="/root">홈</a></li>
+					<li><a href="/root">HOME</a></li>
 					<li>
-						<c:if test="${loginUser == null }">
-							<a href="/root/member/login">회원정보</a>
-						</c:if>
-						<c:if test="${loginUser != null }">
-							<a href="/root/member/memberInfo">회원정보</a>
-						</c:if>
+						<a href="/root/member/memberInfo">MEMBER_SHIP</a>
+					</li>
+					<li>
+						<a href="/root/board/boardAllList">BOARD</a>
 					</li>
 					<li>
 						<c:if test="${loginUser == null }">
-							<a href="/root/member/login">로그인</a>
+							<a href="/root/member/login">SIGN_IN</a>
 						</c:if>
 						<c:if test="${loginUser != null }">
-							<a href="/root/member/logout">로그아웃</a>
+							<a href="/root/member/logout">SIGN_OUT</a>
 						</c:if>
 					</li>
 				</ul>

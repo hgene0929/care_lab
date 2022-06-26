@@ -25,10 +25,16 @@
 	
 	<!-- 인터셉터 등록 -->
 	<beans:bean id="autoLogin" class="com.care.root.common.AutoLogin"/>
+	<beans:bean id="loginChk" class="com.care.root.common.LoginChk"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/" />
 			<beans:ref bean="autoLogin" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/writeForm" />
+			<mapping path="/member/memberInfo" />
+			<beans:ref bean="loginChk" />
 		</interceptor>
 	</interceptors>
 	

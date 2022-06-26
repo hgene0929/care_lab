@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FoodTherapy</title>
+<title>Care Lab</title>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -40,9 +40,8 @@ function reg() {
 }
 
 function idCheck() {
-	
 	let id = $("#id").val()
-	console.log(id)
+	
 	$.ajax({
 		url : "idCheck/"+id, type : "get",
 		success : function(result) {
@@ -59,18 +58,14 @@ function idCheck() {
 </script>
 </head>
 <body>
-<%@ include file="../default/header1.jsp" %>
-<br>
-<h3 align="center">회 원 가 입</h3>
-<br>
-
+<%@ include file="../default/header.jsp" %>
 <div class="wrap" align="center">
 	<form id="fo" action="register" method="post">
 		<table>
 			<tr>
 				<td>
 					<input type="text" name="id" id="id", placeholder="아이디" oninput="idCheck()">
-					<label id="aaa"></label><br>
+					<label id="label"></label><br>
 					
 					<input type="password" name="pw" id="pw", placeholder="패스워드"><br>
 					<input type="text" name="addr" id="addr1" readonly, placeholder="우편번호">

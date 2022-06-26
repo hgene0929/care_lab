@@ -7,7 +7,6 @@
 <title>Care Lab</title>
 </head>
 <body>
-<%@ include file="../default/header.jsp" %>
-<h3 align="center">${loginUser }님 환영합니다!</h3>
+
 </body>
 </html>
