@@ -37,7 +37,7 @@ function readURL(input) {
 			<textarea class="form-control" rows="10" cols="55" name="content" id="content">${data.content }</textarea>
 		</div>
 		<div class="form-group">
-			<img src="download?imageFileName=${data.imageFileName }" width="200px" height="100px" id="preview"><br>
+			<img src="download?imageFileName=${data.imageFileName }" width="200px" height="100px" id="preview"><br>n b
 			<input type="file" name="imageFileName" onchange="readURL(this)">
 		</div>
 		<div align="right">

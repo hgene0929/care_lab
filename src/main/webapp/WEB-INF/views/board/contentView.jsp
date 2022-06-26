@@ -16,7 +16,7 @@
 		display: none;
 		position: fixed; z-index: 10; margin: auto;
 		top: 30px; left: 0; right: 0; width: 350px;
-		height: 450px; background-color: rgba(178,204,255,0.9)
+		height: 450px; background-color: rgba(207, 211, 212, 0.9)
 	}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -70,24 +70,40 @@ function replyData() {
 		}
 	})
 }
+function login() {
+	alert('로그인이 필요한 기능입니다.')
+	location.href="/root/member/login"
+}
 </script>
 </head>
 <body onload="replyData()">
 <%@ include file="../default/header.jsp" %>
 
 <div id="modal_wrap">
-	<div id="first">
-		<div style="width: 250px; margin: auto; padding-top: 20px">
+	<div id="first" style="height: 500px">
+		<div style="width: 250px; margin: auto; padding-top: 20px;">
 		<form id="frm">
 			<input type="hidden" name="write_no" value="${data.writeNo }">
-			<b>답글 작성 페이지</b><hr>
-			<b>작성자 : ${loginUser }</b><hr>
-			<b>제목</b><br>
-			<input type="text" name="title" id="title" size="30"><hr>
-			<b>내용</b><br>
-			<textarea name="content" id="content" rows="5" cols="30"></textarea><hr>
-			<button type="button" onclick="rep()">댓글</button>
-			<button type="button" onclick="slide_hide()">취소</button>
+			<b>Reply</b><hr>
+			<div class="form-group">
+				<label for="id">작성자:</label>
+				<input class="form-control" type="text" name="id", id="id" value="${loginUser }" readonly>
+			</div>
+			<div class="form-group">
+				<label for="title">제목:</label>
+				<input class="form-control" type="text" size="30" name="title" id="title">
+			</div>
+			<div class="form-group">
+				<label for="content">내용:</label>
+				<textarea class="form-control" rows="5" cols="33" name="content" id="content"></textarea>
+			</div>
+			<c:if test="${loginUser == null }">
+				<button class="btn btn-primary" type="button" onclick="login()">reply</button>
+			</c:if>
+			<c:if test="${loginUser != null }">
+				<button class="btn btn-primary" type="button" onclick="rep()">reply</button>
+			</c:if>
+			<button class="btn btn-outline-primary" type="button" onclick="slide_hide()">reset</button>
 		</form>
 		</div>
 	</div>

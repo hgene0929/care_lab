@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService {
 		result = mapper.writeSave(dto); //성공하면 1, 실패하면 0
 		String msg, url;
 		if(result == 1) {
-			msg = "새 글이 추가되었습니다.";
+			msg = "새 게시글이 추가되었습니다.";
 			url = "/root/board/boardAllList";
 		} else {
 			msg = "문제가 발생하였습니다.";
@@ -77,10 +77,10 @@ public class BoardServiceImpl implements BoardService {
 		String msg, url;
 		if(result == 1) {
 			bfs.deleteImage(imageFileName);
-			msg = "삭제 성공!";
+			msg = "게시글을 삭제하였습니다.";
 			url = "/root/board/boardAllList";
 		} else {
-			msg = "삭제 실패!";
+			msg = "문제가 발생하였습니다.";
 			url = "/root/board/contentView";
 		}
 		return bfs.getMessage(msg, url);
@@ -103,10 +103,10 @@ public class BoardServiceImpl implements BoardService {
 		String msg, url;
 		int result = mapper.update(dto);
 		if(result == 1) {
-			msg = "수정 성공!";
+			msg = "게시글을 수정하였습니다.";
 			url = "/root/board/boardAllList";
 		} else {
-			msg = "수정 실패!";
+			msg = "문제가 발생하였습니다.";
 			url = "/root/board/update_form";
 		}
 		return bfs.getMessage(msg, url);
