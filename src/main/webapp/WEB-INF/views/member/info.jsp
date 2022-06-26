@@ -20,23 +20,23 @@ function del() {
 <%@ include file="../default/header.jsp" %>
 
 <div class="wrap">
-	<br>
-	<h3 align="center">개 인 정 보</h3>
-	<br>
-	<table class="table table-striped">
-		<tr><th>아이디</th> <td>${data.id }</td></tr>
+	<div style="width:600px; margin:0 auto;">
+	<br><br><br>
+	<table class="table">
+		<tr><th style="width: 100px;">아이디</th> <td>${data.id }</td></tr>
 		<tr><th>비밀번호</th> <td>${data.pw }</td></tr>
 		<tr><th>주소</th> <td>${data.addr }</td></tr>
 		<c:if test="${loginUser == data.id }">
 			<tr>
 				<td colspan="2" align="right">
-					<button type="button" onclick="location.href='update_form?id=${data.id}'">수정</button>
-					&nbsp; &nbsp;
-					<button type="button" onclick="del()">탈퇴</button>
+					<button class="btn btn-outline-primary" type="button" onclick="location.href='update_form?id=${data.id}'">  update  </button>
+					&nbsp;
+					<button class="btn btn-outline-primary" type="button" onclick="del()">withdraw</button>
 				</td>
 			</tr>
 		</c:if>
 	</table>
+	</div>
 </div>
 </body>
 </html>

@@ -26,11 +26,11 @@
 
 .navdiv {
 	width: 100%;
-	background-color: olive;
+	background-color: rgb(2, 25, 64);
 }
 
 nav {
-	background-color: olive;
+	background-color: rgb(2, 25, 64);
 	width: 1000px;
 }
 
@@ -51,20 +51,20 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-	color: orange;
+	color: rgb(198, 200, 204);
 	padding-bottom: 3px; /* a태그 밑줄과 글씨 간격*/
-	border-bottom: 1px solid orange;
+	border-bottom: 1px solid gray;
 	transition: all 0.25s;
 }
 
 .title { /*오른, 아래, 번짐*/
-	text-shadow: 10px 10px 15px black;
+	
 	font-size: 70pt;
 	text-align: center;
-	margin-top: 0px;
-	padding-bottom: 20px;
-	color: burlywood;
-	font-family: Gabriola;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	color: rgb(89, 90, 92);
+	font-family: Lucida Console;
 }
 
 .content {

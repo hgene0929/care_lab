@@ -24,22 +24,31 @@ function readURL(input) {
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../default/header.jsp" %>
 
-<div id="wrap" style="width: 400px; margin: auto;">
-<h1 style="text-align: center;">글 쓰기</h1><br>
-<form action="/root/board/writeSave" method="post" enctype="multipart/form-data">
-	<b>작성자</b>
-	<input type="text" name="id" value="${loginUser }" readonly><hr>
-	<b>제목</b>
-	<input type="text" size="50" name="title"><hr>
-	<b>내용</b>
-	<textarea rows="10" cols="55" name="content"></textarea><hr>
-	<b>이미지 파일 첨부</b>
-	<input type="file" name="image_file_name" onchange="readURL(this)">
-	<img src="#" width="100" height="100" id="preview"><hr>
-	<div align="right">
-		<input type="submit" value="작성">
-		<a href="/root/board/boardAllList">목록이동</a>
-	</div>
-</form>
+<div id="wrap" style="width: 400px; margin: auto; margin-bottom: 120px; margin-top: 50px;">
+	<h1 style="text-align: center;">care board</h1><br>
+	<form action="/root/board/writeSave" method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="id">작성자:</label>
+			<input class="form-control" type="text" name="id", id="id" value="${loginUser }" readonly>
+		</div>
+		<div class="form-group">
+			<label for="title">제목:</label>
+			<input class="form-control" type="text" size="50" name="title" id="title">
+		</div>
+		<div class="form-group">
+			<label for="content">내용:</label>
+			<textarea class="form-control" rows="10" cols="55" name="content" id="content"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="img">이미지 파일 첨부:</label>
+			<input type="file" name="image_file_name" onchange="readURL(this)" id="img">
+			<img src="#" width="100" height="100" id="preview">
+		</div>
+		<div align="right">
+				<input class="btn btn-primary" type="submit" value="upload">
+				<input class="btn btn-outline-primary" type="button" onclick="location.href='/root/board/boardAllList'" value="back">
+		</div>
+	</form>
+</div>
 </body>
 </html>

@@ -29,9 +29,10 @@ public class BoardController {
 	@Autowired BoardService bs;
 	
 	@GetMapping("boardAllList")
-	public String boardAllList(Model model) {
+	public String boardAllList(Model model,
+							   @RequestParam(value = "num", required = false, defaultValue = "1")int num) {
 		
-		bs.boardAllList(model);
+		bs.boardAllList(model, num);
 		return "board/boardAllList";
 	}
 	
@@ -61,7 +62,7 @@ public class BoardController {
 	@GetMapping("download")
 	public void download(@RequestParam String imageFileName,
 						 HttpServletResponse response) throws Exception {
-		response.addHeader("content-dispotion", "attachment; fileName="+imageFileName);
+		response.addHeader("Content-dispotion", "attachment; fileName="+imageFileName);
 		File file = new File(BoardFileService.IMAGE_REPO+"/"+imageFileName);
 		FileInputStream in = new FileInputStream(file);
 		FileCopyUtils.copy(in, response.getOutputStream());
@@ -69,10 +70,13 @@ public class BoardController {
 	}
 	
 	@GetMapping("delete")
-	public String delete(@RequestParam int writeNo) {
-		
-		bs.delete(writeNo);
-		return "redirect:/";
+	public void delete(@RequestParam int writeNo,
+						 @RequestParam String imageFileName,
+						 HttpServletResponse response) throws Exception {
+		String message = bs.delete(writeNo, imageFileName);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(message);
 	}
 	
 	@GetMapping("update_form")
@@ -83,10 +87,13 @@ public class BoardController {
 	}
 	
 	@PostMapping("update")
-	public String update(BoardDTO dto) {
+	public void update(MultipartHttpServletRequest mul, HttpServletResponse response)
+						 throws Exception {
 		
-		bs.update(dto);
-		return "redirect:contentView?writeNo="+dto.getWriteNo();
+		String message = bs.update(mul);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(message);
 	}
 }
 

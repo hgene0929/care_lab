@@ -5,30 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Care Lab</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function readURL(input) {
+	let file = input.files[0] //파일의 정보
+	if(file != "") {
+		let reader = new FileReader()
+		reader.readAsDataURL(file) //파일의 정보를 토대로 파일 읽기
+		reader.onload = function(e) {//파일 로드한 값 표현
+			//e : 이벤트 안에 result 값이 파일의 정보를 가지고 있다
+			$("#preview").attr("src", e.target.result)
+		}
+	}
+}
+</script>
 </head>
 <body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../default/header.jsp" %>
 
-<div class="wrap" align="center" style="width: 500px; margin: 0 auto;">
-	<br>
-	<h3 align="center">게 시 글 수 정</h3>
-	<br>
+<div id="wrap" style="width: 400px; margin: auto; margin-bottom: 120px; margin-top: 50px;">
 	<form action="update" method="post" enctype="multipart/form-data">
-	<b>작성자</b>
-	<input type="text" name="id" value="${data.id }" readonly><hr>
-	<b>제목</b>
-	<input type="text" size="50" name="title" value="${data.title }"><hr>
-	<b>내용</b>
-	<textarea rows="10" cols="55" name="content" value="${data.content }"></textarea><hr>
-	<b>이미지 파일 첨부</b>
-	<input type="file" name="image_file_name" onchange="readURL(this)">
-	<img src="#" width="100" height="100" id="preview"><hr>
-	<div align="right">
-		<input type="submit" value="수정">
-		<a href="/root/board/boardAllList">목록이동</a>
-	</div>
-</form>
+		<input type="hidden" name="writeNo" value="${data.writeNo }">
+		<input type="hidden" name="originFileName" value="${data.imageFileName }">
+		<div class="form-group">
+			<label for="title">제목:</label>
+			<input class="form-control" type="text" size="50" name="title" id="title" value="${data.title }">
+		</div>
+		<div class="form-group">
+			<label for="content">내용:</label>
+			<textarea class="form-control" rows="10" cols="55" name="content" id="content">${data.content }</textarea>
+		</div>
+		<div class="form-group">
+			<img src="download?imageFileName=${data.imageFileName }" width="200px" height="100px" id="preview"><br>
+			<input type="file" name="imageFileName" onchange="readURL(this)">
+		</div>
+		<div align="right">
+				<input class="btn btn-primary" type="submit" value="update">
+				<input class="btn btn-outline-primary" type="button" onclick="location.href='/root/board/boardAllList'" value="reset">
+		</div>
+	</form>
 </div>
+
 </body>
 </html>
